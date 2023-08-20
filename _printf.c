@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - Prints formatted output to the standard output stream.
  * @format: The format string containing zero or more directives.
@@ -9,25 +8,27 @@
 
 int _printf(const char *format, ...)
 {
+	int count = 0;
 	va_list args;
-	unsigned int i, nbch = 0;
 
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			char *s = va_arg(args, char *);
 
-			nbch = check(format[i], s, nbch);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			print_specifier(*format, args, &count);
 		}
 		else
 		{
-			write(1, &format[i], 1);
-			nbch++;
+			putchar(*format);
+			count++;
 		}
+		format++;
 	}
+
 	va_end(args);
-	return (nbch);
+
+	return (count);
 }
