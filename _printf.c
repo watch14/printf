@@ -5,18 +5,13 @@
  *
  * Return: The number of characters printed.
  */
-
 int _printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int i, nbch = 0;
 
 	va_start(args, format);
-
-	if (format == NULL)
-		return (-1);
-
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0 ; format[i] != '\0' ; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -27,15 +22,22 @@ int _printf(const char *format, ...)
 
 				write(1, &c, 1);
 				nbch++;
-			}
-			else if (format[i] == 's')
+			} else if (format[i] == 's')
 			{
 				char *s = va_arg(args, char *);
 
 				write(1, s, str_len(s));
 				nbch += str_len(s);
 			}
-		} else
+			else if (format[i] == '%')
+			{
+				char s = '%';
+
+				write(1, &s, 1);
+				nbch++;
+			}
+		}
+		else
 		{
 			write(1, &format[i], 1);
 			nbch++;
