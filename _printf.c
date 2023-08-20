@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	unsigned int i, nbch = 0;
+	int i, nbch = 0;
 
 	va_start(args, format);
 	for (i = 0 ; format[i] != '\0' ; i++)
