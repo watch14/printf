@@ -1,4 +1,15 @@
 #include "main.h"
+/**
+ * _putchar - Writes a character to the standard output.
+ * @c: The character to be written.
+ *
+ * Return: On success, returns the number of characters written.
+ * On error, returns -1.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
 
 /**
  * str_len - Calculate the length of a string.
@@ -26,20 +37,31 @@ int str_len(char *str)
  *
  * Return: The updated count of characters printed.
  */
-
 int check(char specifier, va_list args, int count)
 {
 	switch (specifier)
 	{
 		case 'c':
-			putchar(va_arg(args, int));
+			_putchar(va_arg(args, int));
 			count++;
 			break;
 		case 's':
-			count += printf("%s", va_arg(args, char *));
+			{
+				char *str = va_arg(args, char *);
+
+				if (str)
+				{
+					while (*str != '\0')
+					{
+						_putchar(*str);
+						str++;
+						count++;
+					}
+				}
+			}
 			break;
 		case '%':
-			putchar('%');
+			_putchar('%');
 			count++;
 			break;
 		case 'i':
@@ -47,8 +69,8 @@ int check(char specifier, va_list args, int count)
 			count += printf("%d", va_arg(args, int));
 			break;
 		default:
-			putchar('%');
-			putchar(specifier);
+			_putchar('%');
+			_putchar(specifier);
 			count += 2;
 			break;
 	}

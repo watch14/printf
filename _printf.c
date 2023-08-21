@@ -5,6 +5,7 @@
  *
  * Return: The number of characters printed.
  */
+
 int _printf(const char *format, ...)
 {
 	unsigned int count = 0;
@@ -24,7 +25,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			putchar(*format);
+			_putchar(*format);
 			count++;
 		}
 		format++;
