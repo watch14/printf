@@ -5,34 +5,28 @@
  *
  * Return: The number of characters printed.
  */
-
 int _printf(const char *format, ...)
 {
-	unsigned int count = 0;
 	va_list args;
+	unsigned int i, nbch = 0;
 
 	va_start(args, format);
 
-	if (format == NULL)
-		return (-1);
-
-	while (*format)
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (*format == '%')
+		if (format[i] == '%')
 		{
-			format++;
-			print_specifier(*format, args, count);
+			i++;
+			char *s = va_arg(args, char *);
+
+			nbch = check(format[i], s, nbch);
 		}
 		else
 		{
-			putchar(*format);
-			count++;
+			write(1, &format[i], 1);
+			nbch++;
 		}
-		format++;
 	}
-
 	va_end(args);
-
-	return (count);
-
+	return (nbch);
 }
