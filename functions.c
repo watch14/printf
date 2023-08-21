@@ -55,4 +55,5 @@ int check(char specifier, va_list args, int count)
 			break;
 	}
 	return (count);
+}
 
