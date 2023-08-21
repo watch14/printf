@@ -17,14 +17,16 @@ int str_len(char *str)
 	}
 	return (len);
 }
-#include "main.h"
 
 /**
- * print_specifier - Handle the printing of conversion specifiers.
+ * check - Handles the printing of conversion specifiers.
  * @specifier: The conversion specifier character.
  * @args: The variable argument list.
- * @count: Pointer to the count of characters printed.
+ * @count: The count of characters printed.
+ *
+ * Return: The updated count of characters printed.
  */
+
 int check(char specifier, va_list args, int count)
 {
 	switch (specifier)
