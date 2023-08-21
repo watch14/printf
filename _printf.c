@@ -7,7 +7,7 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int nbch = 0;
+	unsigned int count = 0;
 	va_list args;
 
 	va_start(args, format);
@@ -20,17 +20,17 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			nbch = check(*format, args, count);
+			count = check(*format, args, count);
 		}
 		else
 		{
 			putchar(*format);
-			nbch++;
+			count++;
 		}
 		format++;
 	}
 
 	va_end(args);
 
-	return (nbch);
+	return (count);
 }
