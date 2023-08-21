@@ -38,7 +38,18 @@ int check(char specifier, va_list args, int count)
 			count++;
 			break;
 		case 's':
-			count += printf("%s", va_arg(args, char *));
+			{
+				char *str = va_arg(args, char *);
+				if (str)
+				{
+					while (*str != '\0')
+					{
+						putchar(*str);
+						str++;
+						count++;
+					}
+				}
+			}
 			break;
 		case '%':
 			putchar('%');
@@ -49,11 +60,10 @@ int check(char specifier, va_list args, int count)
 			count += printf("%d", va_arg(args, int));
 			break;
 		default:
-			putchar('%');
+			_utchar('%');
 			putchar(specifier);
 			count += 2;
 			break;
 	}
 	return (count);
 }
-
