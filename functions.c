@@ -49,7 +49,7 @@ int check(char specifier, va_list args, int count)
 		default:
 			putchar('%');
 			putchar(specifier);
-			count++;
+			count += 2;
 			break;
 	}
 	return (count);
