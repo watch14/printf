@@ -9,7 +9,7 @@
 #define BUFF_SIZE 1024
 
 int _printf(const char *format, ...);
-void print_specifier(char specifier, va_list args, int *count);
+void print_specifier(char specifier, va_list args, int count);
 int str_len(char *str);
 
 #endif

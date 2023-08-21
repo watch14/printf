@@ -1,33 +1,36 @@
 #incluide "main.h"
+
 /**
- * check - Handles different format specifiers.
- * @f: The format specifier.
- * @s: The string argument.
- * @nbch: The current number of characters printed.
- *
- * Return: The updated number of characters printed.
+ * print_specifier - Handle the printing of conversion specifiers.
+ * @specifier: The conversion specifier character.
+ * @args: The variable argument list.
+ * @count: Pointer to the count of characters printed.
  */
-
-int check(char f, char *s, int nbch)
+void print_specifier(char specifier, va_list args, int count)
 {
-	if (f == 'c')
+	switch (specifier)
 	{
-		write(1, s, 1);
-		nbch++;
+		case 'c':
+			putchar(va_arg(args, int));
+			count++;
+			break;
+		case 's':
+			count += printf("%s", va_arg(args, char *));
+			break;
+		case '%':
+			putchar('%');
+			count++;
+			break;
+		case 'i':
+		case 'd':
+			count += printf("%d", va_arg(args, int));
+			break;
+		default:
+			putchar('%');
+			putchar(specifier);
+			count += 2;
+			break;
 	}
-	else if (f == 's')
-	{
-		write(1, s, str_len(s));
-		nbch += str_len(s);
-	}
-	else if (f == '%')
-	{
-		char c = '%';
-
-		write(1, &c, 1);
-		nbch++;
-	}
-	return (nbch);
 }
 
 /**
@@ -46,36 +49,4 @@ int str_len(char *str)
 		len++;
 	}
 	return (len);
-}
-/**
- * print_specifier - Handle the printing of conversion specifiers.
- * @specifier: The conversion specifier character.
- * @args: The variable argument list.
- * @count: Pointer to the count of characters printed.
- */
-void print_specifier(char specifier, va_list args, int *count)
-{
-	switch (specifier)
-	{
-		case 'c':
-			putchar(va_arg(args, int));
-			(*count)++;
-			break;
-		case 's':
-			(*count) += printf("%s", va_arg(args, char *));
-			break;
-		case '%':
-			putchar('%');
-			(*count)++;
-			break;
-		case 'i':
-		case 'd':
-			(*count) += printf("%d", va_arg(args, int));
-			break;
-		default:
-			putchar('%');
-			putchar(specifier);
-			(*count) += 2;
-			break;
-	}
 }
