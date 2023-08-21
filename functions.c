@@ -42,7 +42,7 @@ int check(char specifier, va_list args, int count)
 	switch (specifier)
 	{
 		case 'c':
-			_putchar(va_arg(args, int));
+			putchar(va_arg(args, int));
 			count++;
 			break;
 		case 's':
@@ -53,7 +53,7 @@ int check(char specifier, va_list args, int count)
 				{
 					while (*str != '\0')
 					{
-						_putchar(*str);
+						putchar(*str);
 						str++;
 						count++;
 					}
@@ -61,7 +61,7 @@ int check(char specifier, va_list args, int count)
 			}
 			break;
 		case '%':
-			_putchar('%');
+			putchar('%');
 			count++;
 			break;
 		case 'i':
@@ -69,8 +69,8 @@ int check(char specifier, va_list args, int count)
 			count += printf("%d", va_arg(args, int));
 			break;
 		default:
-			_putchar('%');
-			_putchar(specifier);
+			putchar('%');
+			putchar(specifier);
 			count += 2;
 			break;
 	}
