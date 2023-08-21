@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	if (format == NULL)
-		return (-1);
+		return;
 
 	while (*format)
 	{
@@ -33,5 +33,6 @@ int _printf(const char *format, ...)
 
 	va_end(args);
 
-	return (cunt);
+	rieturn (count);
+
 }
