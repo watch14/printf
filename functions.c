@@ -6,29 +6,29 @@
  * @args: The variable argument list.
  * @count: Pointer to the count of characters printed.
  */
-void print_specifier(char specifier, va_list args, int *count)
+void print_specifier(char specifier, va_list args, int count)
 {
 	switch (specifier)
 	{
 		case 'c':
 			putchar(va_arg(args, int));
-			(*count)++;
+			count++;
 			break;
 		case 's':
-			(*count) += printf("%s", va_arg(args, char *));
+			count += printf("%s", va_arg(args, char *));
 			break;
 		case '%':
 			putchar('%');
-			(*count)++;
+			count++;
 			break;
 		case 'i':
 		case 'd':
-			(*count) += printf("%d", va_arg(args, int));
+			count += printf("%d", va_arg(args, int));
 			break;
 		default:
 			putchar('%');
 			putchar(specifier);
-			(*count) += 2;
+			count += 2;
 			break;
 	}
 }
