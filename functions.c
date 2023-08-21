@@ -40,6 +40,7 @@ int check(char specifier, va_list args, int count)
 		case 's':
 			{
 				char *str = va_arg(args, char *);
+
 				if (str)
 				{
 					while (*str != '\0')
@@ -60,7 +61,7 @@ int check(char specifier, va_list args, int count)
 			count += printf("%d", va_arg(args, int));
 			break;
 		default:
-			_utchar('%');
+			putchar('%');
 			putchar(specifier);
 			count += 2;
 			break;
