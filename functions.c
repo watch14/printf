@@ -30,7 +30,7 @@ int check(char f, char *s, int nbch)
 {
 	if (f == 'c')
 	{
-		write(1, s, 1);
+		write(1, &s, 1);
 		nbch++;
 	}
 	else if (f == 's')

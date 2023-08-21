@@ -10,7 +10,7 @@
 
 
 int _printf(const char *format, ...);
-void print_specifier(char specifier, va_list args, int count);
+int check(char f, char *s, int nbch);
 int str_len(char *str);
 
 
