@@ -10,7 +10,6 @@
 
 int _printf(const char *format, ...);
 int check(char specifier, va_list args, int count);
-int str_len(char *str);
 
 
 
