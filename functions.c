@@ -46,6 +46,9 @@ int check(char specifier, va_list args, int count)
 		case 'd':
 			count += printf("%d", va_arg(args, int));
 			break;
+		case 'b':
+			count += print_binary(va_arg(args, int));
+			break;
 		default:
 			putchar('%');
 			putchar(specifier);
