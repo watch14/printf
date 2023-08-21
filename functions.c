@@ -72,6 +72,54 @@ int check_d(va_list args, int count)
 }
 
 /**
+ * check_b - Prints an unsigned integer in binary format.
+ * @args: The variable argument list.
+ * @count: The current count of characters printed.
+ * 
+ * Return: The updated count of characters printed.
+ */
+int check_b(va_list args, int count)
+{
+	unsigned int n = va_arg(args, unsigned int);
+
+	if (n == 0)
+	{
+		char c = '0';
+
+		write(1, &c, 1);
+		count++;
+	}
+	else if (n == 1)
+	{
+		char c = '1';
+
+		write(1, &c, 1);
+		count++;
+	}
+	else
+	{
+		char binary[32];
+		int i = 0;
+
+		while (n > 0)
+		{
+			binary[i] = (n % 2) + '0';
+			n /= 2;
+			i++;
+		}
+
+		while (i > 0)
+		{
+			i--;
+			write(1, &binary[i], 1);
+			count++;
+		}
+	}
+
+	return (count);
+}
+
+/**
  * check - Handles the printing of conversion specifiers.
  * @specifier: The conversion specifier character.
  * @args: The variable argument list.
@@ -96,6 +144,9 @@ int check(char specifier, va_list args, int count)
 		case 'i':
 		case 'd':
 			count = check_d(args, count);
+			break;
+		case 'b':
+			count = check_b(args, count);
 			break;
 		default:
 			write(1, "%", 1);
