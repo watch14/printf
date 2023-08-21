@@ -7,26 +7,30 @@
  */
 int _printf(const char *format, ...)
 {
+	unsigned int count = 0;
 	va_list args;
-	unsigned int i, nbch = 0;
 
 	va_start(args, format);
 
-	for (i = 0; format[i] != '\0'; i++)
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			char *s = va_arg(args, char *);
+	if (format == NULL)
+		return (-1);
 
-			nbch = check(format[i], s, nbch);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			count = check(*format, args, count);
 		}
 		else
 		{
-			write(1, &format[i], 1);
-			nbch++;
+			putchar(*format);
+			count++;
 		}
+		format++;
 	}
+
 	va_end(args);
-	return (nbch);
+
+	return (count);
 }
