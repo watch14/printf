@@ -30,6 +30,10 @@ int check_c(va_list args, int count)
 {
 	char c = va_arg(args, int);
 
+	if (c == NULL)
+	{
+		return (-1);
+	}
 	write(1, &c, 1);
 	count++;
 	return (count);
@@ -48,6 +52,10 @@ int check_s(va_list args, int count)
 {
 	char *str = va_arg(args, char *);
 
+	if (str == NULL)
+	{
+		return (-1);
+	}
 	count += write(1, str, strlen(str));
 	return (count);
 }
