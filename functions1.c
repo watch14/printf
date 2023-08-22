@@ -93,7 +93,7 @@ int check(char specifier, va_list args, int count)
 			count = check_s(args, count);
 			break;
 		case '%':
-			break;
+			return count;
 		case 'i':
 		case 'd':
 			count = check_d(args, count);
@@ -104,5 +104,6 @@ int check(char specifier, va_list args, int count)
 			count += 2;
 			break;
 	}
-	return (count);
+	return count;
 }
+
