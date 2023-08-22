@@ -30,10 +30,6 @@ int check_c(va_list args, int count)
 {
 	char c = va_arg(args, int);
 
-	if (c == NULL)
-	{
-		return (-1);
-	}
 	write(1, &c, 1);
 	count++;
 	return (count);
