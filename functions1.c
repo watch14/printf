@@ -80,7 +80,6 @@ int check_d(va_list args, int count)
  *
  * Return: The updated count of characters printed.
  */
-
 int check(char specifier, va_list args, int count)
 {
 	switch (specifier)
@@ -91,16 +90,18 @@ int check(char specifier, va_list args, int count)
 		case 's':
 			count = check_s(args, count);
 			break;
+		case '%':
+			write(1, "%", 1);
+			count++;
+			break;
 		case 'i':
 		case 'd':
 			count = check_d(args, count);
 			break;
-		case 'b':
-			count = check_b(args, count);
-			break;
 		default:
+			write(1, "%", 1);
 			write(1, &specifier, 1);
-			count++;
+			count += 2;
 			break;
 	}
 	return (count);
