@@ -104,6 +104,6 @@ int check(char specifier, va_list args, int count)
 			count += 2;
 			break;
 	}
-	return count;
+	return (count);
 }
 
