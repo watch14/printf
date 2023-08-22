@@ -91,7 +91,7 @@ int check(char specifier, va_list args, int count)
 			count = check_s(args, count);
 			break;
 		case '%':
-			write(1, "%", 1);
+			write(1, specifier, 1);
 			count++;
 			break;
 		case 'i':
