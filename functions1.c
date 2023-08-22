@@ -35,7 +35,6 @@ int check_c(va_list args, int count)
 	return (count);
 }
 
-
 /**
  * check_s - Handle conversion specifier 's'.
  * @args: The variable argument list.
@@ -55,6 +54,7 @@ int check_s(va_list args, int count)
 	count += write(1, str, str_len(str));
 	return (count);
 }
+
 /**
  * check_d - Handle conversion specifier 'd' and 'i'.
  * @args: The variable argument list.
@@ -74,8 +74,6 @@ int check_d(va_list args, int count)
 	}
 	return (count);
 }
-
-
 
 /**
  * check - Handles the printing of conversion specifiers.
