@@ -103,6 +103,12 @@ int check(char specifier, va_list args, int count)
 		case 'd':
 			count = check_d(args, count);
 			break;
+		case 'b':
+			{
+				unsigned int n = va_arg(args, unsigned int);
+				count = check_b(n, count);
+				break;
+			}
 		default:
 			write(1, "%", 1);
 			write(1, &specifier, 1);
