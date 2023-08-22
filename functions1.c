@@ -48,7 +48,7 @@ int check_s(va_list args, int count)
 {
 	char *str = va_arg(args, char *);
 
-	count += write(1, str, str_len(str));
+	count += write(1, str, strlen(str));
 	return (count);
 }
 
