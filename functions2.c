@@ -6,6 +6,7 @@
  * @count: The current count of characters printed.
  * Return: The updated count of characters printed.
  */
+
 int check_b(va_list args, int count)
 {
 	unsigned int n = va_arg(args, unsigned int);

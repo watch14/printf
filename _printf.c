@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _printf - Prints formatted output to the standard output stream.
+ * _printf - Prints formatted output to the standard output  stream.
  * @format: The format string containing zero or more directives.
  *
  * Return: The number of characters printed.
