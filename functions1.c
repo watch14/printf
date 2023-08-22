@@ -59,6 +59,7 @@ int check_s(va_list args, int count)
  *
  * Return: The updated count of characters printed.
  */
+
 int check_d(va_list args, int count)
 {
 	char buffer[20];
@@ -70,6 +71,7 @@ int check_d(va_list args, int count)
 	}
 	return (count);
 }
+
 
 
 /**
