@@ -114,5 +114,3 @@ int check(char specifier, va_list args, int count)
 	}
 	return (count);
 }
-
-a
