@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * check_b - Prints an unsigned integer in binary format.
  * @args: The variable argument list.

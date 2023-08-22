@@ -85,6 +85,7 @@ int check_d(va_list args, int count)
  *
  * Return: The updated count of characters printed.
  */
+
 int check(char specifier, va_list args, int count)
 {
 	switch (specifier)
