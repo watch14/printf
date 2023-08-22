@@ -52,10 +52,9 @@ int check_s(va_list args, int count)
 	{
 		return (-1);
 	}
-	count += write(1, str, strlen(str));
+	count += write(1, str, str_len(str));
 	return (count);
 }
-
 /**
  * check_d - Handle conversion specifier 'd' and 'i'.
  * @args: The variable argument list.
